@@ -3,6 +3,9 @@ on:
   - cron: "2 * * * *" # Runs at 02:00 UTC
   workflow_dispatch:
 
+env:
+  DEVOPS_DIR: iac
+
 jobs:
   check_vulnerabilities:
     runs-on: ubuntu-latest
@@ -10,6 +13,9 @@ jobs:
     steps:
       - name: Checkout repository content
         uses: actions/checkout@v2 # Checkout the repository content to github runner.
+        with:
+          repository: gitdevsecops-cloud/iac
+          path: ${{ env.DEVOPS_DIR }} 
 
       - name: Setup Python Version
         uses: actions/setup-python@v3.1.4
@@ -17,7 +23,8 @@ jobs:
           python-version: 3.9 # Install the python version needed
 
       - name: Install Python dependencies
-        run: python -m pip install requests pandas tabulate --upgrade pip
+        run: python -m pip install --upgrade pip requests pandas pprint tabulate
 
       - name: Execute Python script # Run the run.py to get the latest data
-        run: python alerts.py
+        run: python ${{ env.DEVOPS_DIR }}/run.py
+        shell: sh
