@@ -26,5 +26,5 @@ jobs:
         run: python -m pip install --upgrade pip requests pandas pprint tabulate
 
       - name: Execute Python script # Run the run.py to get the latest data
-        run: python ${{ env.DEVOPS_DIR }}/run.py
+        run: python ${{ env.DEVOPS_DIR }}/alerts.py
         shell: sh
