@@ -7,7 +7,6 @@ on:
 
 jobs:
     check-alerts:
-        name: 'check security scan results'
         defaults:
             run:
                 shell: bash
@@ -20,3 +19,4 @@ jobs:
                         orgs/${ORGANIZATION}/code-scanning/alerts
              env:
                 ORGANIZATION: ${{ github.event.repository.owner.login }}
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
