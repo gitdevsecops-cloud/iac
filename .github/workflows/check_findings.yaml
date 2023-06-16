@@ -15,7 +15,8 @@ jobs:
         run: |
             echo "${{ github.event.repository.owner.login }}"
             gh api -X GET \
-                orgs/${ORGANIZATION}/code-scanning/alerts
+                orgs/${ORGANIZATION}/code-scanning/alerts \
+                | jq
             
        
         env:
