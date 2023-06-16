@@ -4,6 +4,8 @@ name: 'check dependabot security findings'
 on:
     workflow_dispatch:
 
+permissions: read-all
+
 jobs:   
   comment-with-api:
     runs-on: ubuntu-latest
