@@ -1,0 +1,22 @@
+name: 'check dependabot security findings'
+
+
+on:
+    workflow_dispatch:
+
+
+jobs:
+    check-alerts:
+        name: 'check security scan results'
+        defaults:
+            run:
+                shell: bash
+        runs-on: ubuntu-latest
+        steps:
+            - name: 'get dependabot results'
+              run: |
+                    echo "${{ github.event.repository.owner.login }}"
+                    gh api -X GET \
+                        orgs/${ORGANIZATION}/code-scanning/alerts
+             env:
+                ORGANIZATION: ${{ github.event.repository.owner.login }}
