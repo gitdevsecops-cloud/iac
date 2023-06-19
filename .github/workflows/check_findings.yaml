@@ -36,7 +36,7 @@ jobs:
         - uses: actions/github-script@v6
           with:
             script: |
-              import { Octokit } from "octokit";
+               const Octokit = require("octokit");
                const octokit = new Octokit({
                 auth: process.env.github-token
                }) 
