@@ -27,16 +27,18 @@ jobs:
 
   check-specific-alerts:
      runs-on: ubuntu-latest
+     env:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
      steps:
         - name: 'install dependencies'
           shell: bash
           run: npm install octokit
         - uses: actions/github-script@v6
           with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
             script: |
+              import { Octokit } from "octokit";
                const octokit = new Octokit({
-                auth: ${{ secrets.GITHUB_TOKEN }}
+                auth: process.env.github-token
                }) 
 
                await octokit.request('GET /orgs/context.organization.login/code-scanning/aerts', {
