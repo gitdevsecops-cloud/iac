@@ -35,7 +35,6 @@ jobs:
           with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             script: |
-               import { Octokit, App } from "octokit";
                const octokit = new Octokit({
                 auth: ${{ secrets.GITHUB_TOKEN }}
                }) 
