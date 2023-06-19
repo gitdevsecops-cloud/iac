@@ -24,17 +24,22 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ORGANIZATION: ${{ github.event.repository.owner.login }}
           REPOSITORY: ${{ github.event.repository.name }}
+
   check-specific-alerts:
      runs-on: ubuntu-latest
      steps:
+        - name: 'install dependencies'
+          shell: bash
+          run: npm install octokit
         - uses: actions/github-script@v6
           with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
             script: |
                const octokit = new Octokit({
                 auth: ${{ secrets.GITHUB_TOKEN }}
                }) 
 
-               await octokit.request('GET /orgs/${context.organization.login}/code-scanning/aerts', {
+               await octokit.request('GET /orgs/context.organization.login/code-scanning/aerts', {
                 org: 'ORG',
                 hearders: {
                     'X-Github-Api-Version': '2022-11-28'
