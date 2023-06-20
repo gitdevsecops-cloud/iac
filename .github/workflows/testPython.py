@@ -45,8 +45,8 @@ for alert in alerts.json():
    # print(alert.get('number'))
    # print(alert.get('rule'))
    print(f"{type(alert.get('number'))}")
-    
-   if alert.get('number') == "48":
+
+   if int(alert.get('number')) == 48:
         print("creating issue")
         createIssue("48", alert.get('rule'),os.environ['OWNER'],os.environ['REPOSITORY'] )
 
