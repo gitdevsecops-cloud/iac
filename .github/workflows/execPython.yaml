@@ -16,10 +16,9 @@ env:
     REPOSITORY: ${{ github.event.repository.name }}
 
 jobs:
-    install-dependencies:
+    run-script:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
             - run: |
-                pip install PyGithub
                 python testPython.py
