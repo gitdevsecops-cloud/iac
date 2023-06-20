@@ -1,0 +1,15 @@
+name: "run python script"
+
+on:
+    workflow_dispatch:
+
+defaults:
+    run: 
+        shell: bash
+        working-directory: .github/workflows
+
+jobs:
+    install-dependencies:
+        runs-on: ubuntu-latest
+        steps:
+            - run: python testPython.py
