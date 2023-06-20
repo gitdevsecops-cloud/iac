@@ -14,10 +14,10 @@ headers = {
 
 print(f"header is {headers}")
 
-print(f"Url is https://api.github.com/orgs/{os.environ['ORGANIZATION']}+code-scanning/alerts")
+print(f"Url is https://api.github.com/orgs/{os.environ['ORGANIZATION']}/code-scanning/alerts")
 
 alerts = requests.get(
-    f"https://api.github.com/orgs/{os.environ['ORGANIZATION']}+code-scanning/alerts",
+    f"https://api.github.com/orgs/{os.environ['ORGANIZATION']}/code-scanning/alerts",
     headers=headers
 )
 print(alerts.json())
