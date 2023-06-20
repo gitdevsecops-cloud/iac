@@ -1,5 +1,6 @@
 name: "run python script"
 
+permissions: read-all
 on:
     workflow_dispatch:
 
