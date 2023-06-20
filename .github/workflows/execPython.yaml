@@ -8,9 +8,17 @@ defaults:
         shell: bash
         working-directory: .github/workflows
 
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    ORGANIZATION: ${{ github.event.repository.owner.login }}
+    REPOSITORY: ${{ github.event.repository.name }}
+
 jobs:
     install-dependencies:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - run: python testPython.py
+            - run: |
+                pip install PyGithub
+                python testPython.py
