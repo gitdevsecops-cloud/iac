@@ -17,8 +17,8 @@ def createIssue(alert_number, alert, owner, repo):
     # Create an issue
     print(f"creating alert for {alert_number, alert, owner, repo}")
     body = json.dumps({
-        "title": f"{alert_number} {alert.get('id')}",
-        "body": f"issue issue"
+        "title": f"Investigate and resolve: {alert_number} {alert.get('id')}",
+        "body": f"{alert}"
     })
 
     issue = requests.post(
