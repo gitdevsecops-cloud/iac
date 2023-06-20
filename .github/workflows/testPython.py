@@ -17,7 +17,7 @@ def createIssue(alert_number, alert, owner, repo):
     print(f"creating alert for {alert_number, alert, owner, repo}")
     body = {
         "title": f"{alert_number} {alert.get('id')}",
-        "body": f"{alert}"
+        "body": f"issue issue"
     }
 
     issue = requests.post(
