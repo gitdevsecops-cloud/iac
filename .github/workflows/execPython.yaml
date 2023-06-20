@@ -14,7 +14,7 @@ env:
     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     ORGANIZATION: ${{ github.event.repository.owner.login }}
     REPOSITORY: ${{ github.event.repository.name }}
-
+    OWNER: ${{ github.event.repository.owner.login }}
 jobs:
     run-script:
         runs-on: ubuntu-latest
