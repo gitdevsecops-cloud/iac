@@ -42,10 +42,10 @@ alerts = requests.get(
 )
 
 for alert in alerts.json():
-    print(alert.get('number'))
-    print(alert.get('rule'))
+   # print(alert.get('number'))
+   # print(alert.get('rule'))
     
-    if alert.get('number') == 48:
+    if alert.get('number') == "48":
         print("creating issue")
-        createIssue(48, alert.get('rule'),os.environ['OWNER'],os.environ['REPOSITORY'] )
+        createIssue("48", alert.get('rule'),os.environ['OWNER'],os.environ['REPOSITORY'] )
 
