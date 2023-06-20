@@ -1,6 +1,7 @@
 
 import os
 import requests
+import json
 print("hello from python script")
 
 print(f"{os.environ['GITHUB_TOKEN']}")
@@ -15,10 +16,10 @@ headers = {
 def createIssue(alert_number, alert, owner, repo):
     # Create an issue
     print(f"creating alert for {alert_number, alert, owner, repo}")
-    body = {
+    body = json.dumps({
         "title": f"{alert_number} {alert.get('id')}",
         "body": f"issue issue"
-    }
+    })
 
     issue = requests.post(
         url=f"https://api.github.com/repos/{owner}/{repo}/issues",
