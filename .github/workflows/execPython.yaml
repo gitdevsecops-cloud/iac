@@ -12,4 +12,5 @@ jobs:
     install-dependencies:
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v2
             - run: python testPython.py
