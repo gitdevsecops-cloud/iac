@@ -20,4 +20,7 @@ alerts = requests.get(
     f"https://api.github.com/orgs/{os.environ['ORGANIZATION']}/code-scanning/alerts",
     headers=headers
 )
-print(alerts.json())
+
+for alert in alerts.json():
+    print(alert.get('number'))
+    print(alert.get('rule'))
