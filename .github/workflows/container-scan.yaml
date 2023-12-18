@@ -1,0 +1,28 @@
+name: Docker Build and Trivy Scan
+
+on: [push]
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Docker
+      run: |
+        sudo apt-get update
+        sudo apt-get -y install docker.io
+      if: success()
+
+    - name: Build Docker image
+      run: |
+        docker build -t base-image:latest .
+      if: success()
+
+    - name: Run Trivy scanner
+      run: |
+        docker pull aquasec/trivy:latest
+        docker run --rm -v $(pwd):/workdir -w /workdir aquasec/trivy:latest base-image:latest
+      if: success()
