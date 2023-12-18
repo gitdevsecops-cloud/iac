@@ -30,6 +30,8 @@ jobs:
 
     - name: Build Docker image
       run: |
+        git clone https://github.com/SamP10/VulnerableDockerfile.git
+        cd VulnerableDockerfile/vulnContainer
         docker build -t base-image:latest .
       if: success()
 
