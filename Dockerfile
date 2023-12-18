@@ -22,7 +22,7 @@ RUN chmod o-rwx /etc/shadow
 RUN chmod o-rwx /etc/passwd
 COPY ./user-data-ftp/ /home/
 RUN mkdir -p /etc/ssh
-COPY ./sshd_config /etc/ssh/sshd_config
+#COPY ./sshd_config /etc/ssh/sshd_config
 RUN service ssh start
 CMD ["proftpd", "--nodaemon"]
 
