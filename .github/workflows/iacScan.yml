@@ -30,6 +30,7 @@ jobs:
       id: msdo
       with:
        categories: 'Iac'
+       include-tools: container-mapping
 
     # Upload alerts to the Security tab
     - name: Upload alerts to Security tab
